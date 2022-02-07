@@ -10,6 +10,7 @@ const { Option } = Select;
 const { RangePicker } = DatePicker;
 const getCommonDate = () => JSON.parse(localStorage.getItem('dateCommonList') || '[]')
 const dateCommonList = getCommonDate();
+let timer = null
 
 const Page = (props) => {
   const {
@@ -20,6 +21,9 @@ const Page = (props) => {
     outFormat = "", // 'YYYY-MM-DD HH:mm:ss'
     onChange = (value) => {
       console.warn("value", value);
+    },
+    refresh = () => {
+      console.warn("页面/数据刷新...");
     },
   } = props;
 
@@ -266,6 +270,7 @@ Page.propTypes = {
   format: PropTypes.string,
   trigger: PropTypes.string,
   onChange: PropTypes.func,
+  refresh: PropTypes.func,
   outFormat: PropTypes.string,
   showTime: PropTypes.oneOfType([PropTypes.object, PropTypes.bool]),
 };
