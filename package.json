@@ -1,0 +1,49 @@
+{
+  "name": "@dzc/quick-time-selection",
+  "version": "1.0.0",
+  "description": "自定义时间跨度选择器",
+  "keywords": [
+    "time",
+    "date",
+    "time-selection",
+    "date-selection",
+    "quick-selection",
+    "quick-time-selection",
+    "@dzc/quick-time-selection"
+  ],
+  "main": "dist/bundle.js",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "webpack --env.NODE_ENV=production",
+    "dev": "webpack-dev-server --inline --progress --config webpack.config.js"
+  },
+  "author": "zhutf@dazhenyun.cn",
+  "license": "MIT",
+  "dependencies": {
+    "@ant-design/icons": "^4.7.0",
+    "antd": "^4.16.13",
+    "moment": "^2.29.1",
+    "prop-types": "15.6.0",
+    "react": "^16.14.0",
+    "react-dom": "^16.14.0"
+  },
+  "devDependencies": {
+    "@babel/core": "7.2.2",
+    "@babel/plugin-proposal-class-properties": "^7.4.4",
+    "@babel/preset-env": "7.2.3",
+    "@babel/preset-react": "7.0.0",
+    "babel-loader": "^8.0.5",
+    "less": "^3.9.0",
+    "less-loader": "^5.0.0",
+    "css-loader": "0.28.9",
+    "html-webpack-plugin": "3.2.0",
+    "style-loader": "0.19.1",
+    "url-loader": "^4.1.1",
+    "webpack": "4.29.0",
+    "webpack-cli": "3.2.1",
+    "webpack-dev-server": "3.1.14",
+    "webpack-node-externals": "1.6.0"
+  }
+}
