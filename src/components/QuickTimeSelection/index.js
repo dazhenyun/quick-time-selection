@@ -1,8 +1,10 @@
 import React, { useEffect, useState, useRef } from "react";
-import { Button, Popover, InputNumber, DatePicker, Empty, Select } from "antd";
+import { Button, Popover, InputNumber, DatePicker, Empty, Select, ConfigProvider } from "antd";
 import PropTypes from "prop-types";
 import moment from "moment";
 import { DownOutlined, CalendarOutlined } from "@ant-design/icons";
+import zh_CN from 'antd/lib/locale-provider/zh_CN';
+import 'moment/locale/zh-cn';
 import "antd/dist/antd.css";
 import "./index.less";
 
@@ -254,13 +256,15 @@ const Page = (props) => {
           <DownOutlined className="xiala" />
         </span>
       </Popover>
-      <RangePicker
-        className="priview-search"
-        format={format}
-        showTime={showTime}
-        value={time}
-        onChange={setTime}
-      />
+      <ConfigProvider locale={zh_CN}>
+        <RangePicker
+          className="priview-search"
+          format={format}
+          showTime={showTime}
+          value={time}
+          onChange={setTime}
+        />
+      </ConfigProvider>
     </div>
   );
 };
