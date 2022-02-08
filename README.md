@@ -1,12 +1,12 @@
-# 滚动加载组件
+# 自定义时间跨度选择器
 
 ## 描述
 
-基于react、antd、react-infinite-scroller封装的滚动加载组件，用户可以通过配置请求路径、请求方式、响应字段等参数使用组件。
+基于react、antd封装的自定义时间跨度选择器组件，用户可以通过自定义设定时间范围快速选择日期或设置刷新频率使用组件。
 
 ## 效果
 
-<img src="https://i.loli.net/2021/11/17/tHxEPaSFpGw7mhQ.png" width="320"/><img src="https://i.loli.net/2021/11/17/QAy8BLY74U5uhDs.png" width="320"/>
+<img src="https://s2.loli.net/2022/02/08/eOnb4DXIu5YE126.png" width="320"/><img src="https://s2.loli.net/2022/02/08/CxD92z4mph8HBt6.png" width="320"/>
 
 ## 安装
 
@@ -22,27 +22,21 @@ import QuickTimeSelection from '@dzc/quick-time-selection';
 
 export default () => {
 
-  const scrollLoadingProps = {
-    title: '文本列表',
-    showHeader: true,
-    height: '600px',
-    method: 'GET',
-    url: '/api/marketing_planning/getOptionalMsgs',
-    currentPageKey: 'start',
-    params: {
-      version: 1,
-      offSet: 20,
-      start: 0,
-      id: '20'
+  const timeProps = {
+    trigger: "hover", // hover、click
+    defaultTime: [], // [moment().subtract(1, 'years'), moment()]
+    format: "YYYY-MM-DD HH:mm",
+    showTime: { format: "HH:mm" }, // false
+    outFormat: "", // 'YYYY-MM-DD HH:mm:ss'
+    onChange: (value) => {
+      console.warn("value", value);
     },
-    reqCodeKey: 'code',
-    reqCodeValue: '200',
-    reqDataKey: 'data',
-    reqListKey: 'msgs',
-    reqTotalKey: 'total'
+    refresh: () => {
+      console.warn("页面/数据刷新...");
+    }
   }
 
-  return <QuickTimeSelection {...scrollLoadingProps} />;
+  return <QuickTimeSelection {...timeProps} />;
 };
 
 ```
@@ -51,26 +45,18 @@ export default () => {
 
 | 参数 | 说明 | 类型 | 默认值 | 可选值 |
 | --- | --- | --- | --- | --- |
-| title | 列表标题 | string | '文本列表' | - |
-| showHeader | 是否显示列表头部 | boolean | true | - |
-| height | 列表高度（包含头部） | string &#124; number | '100%' | - |
-| method | 列表数据请求方式 | string | 'GET' | 'GET' &#124; 'POST' |
-| url | 列表数据请求地址 | string | '' | - |
-| currentPageKey | 列表滚动的起始页字段key | string | 'page' | - |
-| params | 列表数据请求参数对象（一般包含请求条数、请求当前页等字段） | object | - | - |
-| reqCodeKey | 列表请求返回的状态字段名（可参考下方数据格式） | string | 'code' | - |
-| reqCodeValue | 列表请求返回的成功状态值（可参考下方数据格式） | string | '200' | - |
-| reqDataKey | 列表请求返回的数据字段名（可参考下方数据格式） | string | 'data' | - |
-| reqListKey | 列表请求返回的列表字段名（可参考下方数据格式） | string | 'msgs' | - |
-| reqTotalKey | 列表请求返回的总数字段名（可参考下方数据格式） | string | 'total' | - |
-
+| trigger | 浮窗触发方式，包含移入显示和点击显示两种方式 | string | 'hover' | 'hover' &#124; 'click' |
+| defaultTime | 设置默认时间 | array | [] | 如[moment().subtract(1, 'years'), moment()]等 |
+| format | 设置时间格式 | string |' YYYY-MM-DD HH:mm' | - |
+| showTime | 是否显示时分秒 | object &#124; boolean | { format: "HH:mm" } | { format: "HH:mm" } &#124; false |
+| outFormat | 设置组件结果输出的时间格式 | string | '' | 'YYYY-MM-DD HH:mm:ss' |
+| onChange | 监听时间值变化 | func | - | - |
+| refresh | 监听刷新频率功能 | func | - | - |
 
 ## 更新日志
 
 ```
-3.0.2 组件滚动条优化
-3.0.1 组件样式优化
-3.0.0 组件发布
+1.0.0 组件发布
 ```
 
 ## 数据格式
