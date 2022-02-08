@@ -6,7 +6,8 @@
 
 ## 效果
 
-<img src="https://s2.loli.net/2022/02/08/eOnb4DXIu5YE126.png" width="320"/><img src="https://s2.loli.net/2022/02/08/CxD92z4mph8HBt6.png" width="320"/>
+<img src="https://s2.loli.net/2022/02/08/eOnb4DXIu5YE126.png" width="320"/>
+<img src="https://s2.loli.net/2022/02/08/CxD92z4mph8HBt6.png" width="720"/>
 
 ## 安装
 
@@ -59,12 +60,6 @@ export default () => {
 1.0.0 组件发布
 ```
 
-## 数据格式
-
-![demo.png](https://i.loli.net/2021/11/17/CEKRXPwjqshU973.png)
----
-![demo.png](https://i.loli.net/2021/11/16/RFpnluXH1QTIAg7.png)
-
 ## 温馨提示
 
 ```
@@ -77,5 +72,4 @@ export default () => {
 
 开发不易，开源不易。如果这篇经验对您有所帮助，请多给我一些鼓励和支持，谢谢！。
 
-<img src="https://i.loli.net/2021/11/12/IgrFyOTfE5AkWpu.jpg" width="300"/>
-<img src="https://i.loli.net/2021/11/12/AMhSpxZX19d5CIq.jpg" width="700"/>
+<img src="https://i.loli.net/2021/11/12/IgrFyOTfE5AkWpu.jpg" width="300"/><img src="https://i.loli.net/2021/11/12/AMhSpxZX19d5CIq.jpg" width="300"/>
