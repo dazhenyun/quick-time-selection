@@ -8,7 +8,7 @@ export default () => {
     defaultTime: [], // [moment().subtract(1, 'years'), moment()]
     format: "YYYY-MM-DD HH:mm",
     showTime: { format: "HH:mm" }, // false
-    showRefresh: true,
+    showRefresh: false,
     outFormat: "", // 'YYYY-MM-DD HH:mm:ss'
     onChange: (value) => {
       console.warn("value", value);
