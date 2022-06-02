@@ -50,6 +50,7 @@ export default () => {
 | defaultTime | 设置默认时间 | array | [] | 如[moment().subtract(1, 'years'), moment()]等 |
 | format | 设置时间格式 | string |' YYYY-MM-DD HH:mm' | - |
 | showTime | 是否显示时分秒 | object &#124; boolean | { format: "HH:mm" } | { format: "HH:mm" } &#124; false |
+| showRefresh | 是否显示刷新频率 | boolean | true | false |
 | outFormat | 设置组件结果输出的时间格式 | string | '' | 'YYYY-MM-DD HH:mm:ss' |
 | onChange | 监听时间值变化 | func | - | - |
 | refresh | 监听刷新频率功能 | func | - | - |
