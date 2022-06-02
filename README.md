@@ -28,6 +28,7 @@ export default () => {
     defaultTime: [], // [moment().subtract(1, 'years'), moment()]
     format: "YYYY-MM-DD HH:mm",
     showTime: { format: "HH:mm" }, // false
+    showRefresh: true,
     outFormat: "", // 'YYYY-MM-DD HH:mm:ss'
     onChange: (value) => {
       console.warn("value", value);
@@ -58,6 +59,8 @@ export default () => {
 ## 更新日志
 
 ```
+1.0.4 文档优化
+1.0.3 文档优化
 1.0.2 组件支持刷新控件显示隐藏、优化提示报错问题
 1.0.1 组件语言汉化
 1.0.0 组件发布
