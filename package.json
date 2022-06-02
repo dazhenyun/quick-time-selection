@@ -1,6 +1,6 @@
 {
   "name": "@dzc/quick-time-selection",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "自定义时间跨度选择器",
   "keywords": [
     "time",

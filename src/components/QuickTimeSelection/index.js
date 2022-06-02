@@ -1,18 +1,28 @@
 import React, { useEffect, useState, useRef } from "react";
-import { Button, Popover, InputNumber, DatePicker, Empty, Select, ConfigProvider } from "antd";
+import {
+  Button,
+  Popover,
+  InputNumber,
+  DatePicker,
+  Empty,
+  Select,
+  ConfigProvider,
+  message,
+} from "antd";
 import PropTypes from "prop-types";
 import moment from "moment";
 import { DownOutlined, CalendarOutlined } from "@ant-design/icons";
-import zh_CN from 'antd/lib/locale-provider/zh_CN';
-import 'moment/locale/zh-cn';
+import zh_CN from "antd/lib/locale-provider/zh_CN";
+import "moment/locale/zh-cn";
 import "antd/dist/antd.css";
 import "./index.less";
 
 const { Option } = Select;
 const { RangePicker } = DatePicker;
-const getCommonDate = () => JSON.parse(localStorage.getItem('dateCommonList') || '[]')
+const getCommonDate = () =>
+  JSON.parse(localStorage.getItem("dateCommonList") || "[]");
 const dateCommonList = getCommonDate();
-let timer = null
+let timer = null;
 
 const Page = (props) => {
   const {
@@ -24,6 +34,7 @@ const Page = (props) => {
     onChange = (value) => {
       console.warn("value", value);
     },
+    showRefresh = true,
     refresh = () => {
       console.warn("页面/数据刷新...");
     },
@@ -94,13 +105,13 @@ const Page = (props) => {
 
   const handleDateList = (item) => {
     setTime(item.time);
-    const c = getCommonDate()
-    if (!c.length || c.findIndex(v => item.value === v.value) < 0) {
+    const c = getCommonDate();
+    if (!c.length || c.findIndex((v) => item.value === v.value) < 0) {
       c.push({
         value: item.value,
-        label: item.label
-      })
-      localStorage.setItem('dateCommonList', JSON.stringify(c))
+        label: item.label,
+      });
+      localStorage.setItem("dateCommonList", JSON.stringify(c));
     }
   };
 
@@ -159,9 +170,9 @@ const Page = (props) => {
   };
 
   const handleDc = (item) => {
-    const row = dateList.find(v => v.value === item.value)
-    setTime(row.time)
-  }
+    const row = dateList.find((v) => v.value === item.value);
+    setTime(row.time);
+  };
 
   const dateContent = () => (
     <div className="date-content-body">
@@ -198,29 +209,33 @@ const Page = (props) => {
           </div>
         ))}
       </div>
-      <p className="date-con-title">刷新频率</p>
-      <div className="date-con-box">
-        <InputNumber
-          placeholder="请输入"
-          min={0}
-          value={refreshCount}
-          onChange={setRefreshCount}
-        />
-        <Select
-          placeholder="请选择"
-          value={refreshUnit}
-          onChange={setRefreshUnit}
-        >
-          {refreshUnitList.map((item) => (
-            <Option key={item.value} value={item.value}>
-              {item.label}
-            </Option>
-          ))}
-        </Select>
-        <Button onClick={handleTimeRefresh}>
-          {refreshOpen ? "关闭" : "打开"}
-        </Button>
-      </div>
+      {showRefresh && (
+        <>
+          <p className="date-con-title">刷新频率</p>
+          <div className="date-con-box">
+            <InputNumber
+              placeholder="请输入"
+              min={0}
+              value={refreshCount}
+              onChange={setRefreshCount}
+            />
+            <Select
+              placeholder="请选择"
+              value={refreshUnit}
+              onChange={setRefreshUnit}
+            >
+              {refreshUnitList.map((item) => (
+                <Option key={item.value} value={item.value}>
+                  {item.label}
+                </Option>
+              ))}
+            </Select>
+            <Button onClick={handleTimeRefresh}>
+              {refreshOpen ? "关闭" : "打开"}
+            </Button>
+          </div>
+        </>
+      )}
       <p className="date-con-title">最近使用的日期范围</p>
       {dateCommonList.length ? (
         <div className="common-date-box">
